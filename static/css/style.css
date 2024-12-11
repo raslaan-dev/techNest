@@ -1,0 +1,286 @@
+/* Base font styles */
+:root {
+    font-family: 'Azeret Mono', monospace !important;
+}
+
+body {
+    padding-top: 0;
+    font-family: 'Azeret Mono', monospace !important;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #000000;
+}
+
+/* Make sure all text elements inherit the font */
+h1, h2, h3, p, a, span, button, input, textarea, select {
+    font-family: 'Azeret Mono', monospace !important;
+}
+
+/* Specific elements */
+.nav-link,
+.bracket-link,
+.product h3,
+.product p,
+.cart-count,
+.products-header h2 {
+    font-family: 'Azeret Mono', monospace !important;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: calc(100% - 80px);
+    top: 15px;
+    left: 20px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 30px;
+}
+
+header .container {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 2;
+}
+
+header h1 {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+    height: 100%;
+    margin-left: 20px;
+}
+
+.nav-links, .nav-actions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-links li, .nav-actions li {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-link {
+    font-family: 'Azeret Mono', monospace;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* Optional: Add hover effect */
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-actions a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 30px;
+    position: relative;
+}
+
+#hero {
+    background: url('/images/Smartwatch-02-Header.avif') no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #fff;
+    margin-bottom: 40px;
+    margin-top: 0;
+    padding-top: 0;
+    z-index: 1;
+}
+
+#hero .container {
+    text-align: left;
+    padding: 0 50px;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    pointer-events: auto;
+}
+
+#hero h2 {
+    margin: 0;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+#hero .btn {
+    display: none;
+}
+
+#products {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    box-sizing: border-box;
+}
+    
+.product-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+.product {
+    margin: 0;
+    text-align: center;
+    width: calc(25% - 5px);
+    background-color: #000;
+}
+
+.product img {
+    width: 100%;
+    height: 606px;
+    object-fit: cover;
+}
+
+.product h3 {
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #f2f2f2;
+}
+
+.product p {
+    font-size: 14px;
+    color: #f2f2f2;
+}
+
+.add-to-cart {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#login, #cart {
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.cart-svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cart-count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Azeret Mono', monospace;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.login-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.products-header h2 {
+    font-size: 14px;
+    color: #f2f2f2;
+    margin: 0;
+    font-weight: normal;
+}
