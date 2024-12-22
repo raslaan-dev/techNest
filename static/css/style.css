@@ -284,3 +284,25 @@ footer {
     margin: 0;
     font-weight: normal;
 }
+
+
+/* cursor section */
+.cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    pointer-events: none; /* Prevent interference with user interactions */
+    z-index: 9999999;
+    mix-blend-mode: difference;
+    transition: transform 0.3s ease, background 0.3s ease; /* Smooth animation for hover effects */
+    transform: translate(-50%, -50%);
+}
+
+.grow {
+    transform: translate(-50%, -50%) scale(2); /* Scale the cursor when hovering */
+    background: #ffffff; /* Change background to white on hover */
+    mix-blend-mode: difference;
+}
+
