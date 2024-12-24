@@ -35,24 +35,24 @@ h1, h2, h3, p, a, span, button, input, textarea, select {
 
 header {
     background: #333;
-    color: #fff;
+    color: #f2f2f2;
     padding: 0px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: fixed;
     width: calc(100% - 80px);
-    top: 15px;
-    left: 20px;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
+    top: 0;
+    left: 50%;
+    transform: translateY(0); /* Default visible position */
+    transition: transform 0.3s ease; /* Smooth animation */
+    z-index: 9999;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    height: 30px;
+    height: 50px; /* Updated height for better visibility */
 }
 
 header .container {
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,8 +63,8 @@ header .container {
 header h1 {
     margin: 0;
     padding-left: 20px;
-    font-size: 14px;
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 50px; /* Matches the header height */
 }
 
 nav {
@@ -286,23 +286,23 @@ footer {
 }
 
 
-/* cursor section */
+/* cursor section 
 .cursor {
     position: fixed;
     width: 30px;
     height: 30px;
     border: 2px solid #ffffff;
     border-radius: 50%;
-    pointer-events: none; /* Prevent interference with user interactions */
+    pointer-events: none; /* Prevent interference with user interactions 
     z-index: 9999999;
     mix-blend-mode: difference;
-    transition: transform 0.3s ease, background 0.3s ease; /* Smooth animation for hover effects */
+    transition: transform 0.3s ease, background 0.3s ease; /* Smooth animation for hover effects 
     transform: translate(-50%, -50%);
 }
 
 .grow {
-    transform: translate(-50%, -50%) scale(2); /* Scale the cursor when hovering */
-    background: #ffffff; /* Change background to white on hover */
+    transform: translate(-50%, -50%) scale(2); /* Scale the cursor when hovering 
+    background: #ffffff; /* Change background to white on hover 
     mix-blend-mode: difference;
 }
-
+ */

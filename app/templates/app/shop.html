@@ -6,69 +6,71 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
-		<title>Shop - TechNest</title>
+		<title>Help - TechNest</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<link
 			rel="preconnect"
-			href="{% static 'https://fonts.googleapis.com' %}" />
+			href="https://fonts.googleapis.com" />
 		<link
 			rel="preconnect"
-			href="{% static 'https://fonts.gstatic.com' %}"
+			href="https://fonts.gstatic.com"
 			crossorigin />
 		<link
-			href="{% static 'https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap' %}"
+			href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap"
 			rel="stylesheet" />
-
 		<link
 			rel="stylesheet"
 			href="{% static 'css/style.css' %}" />
 	</head>
-	<body class="font-['Azeret_Mono']">
-		<div class="cursor"></div>
+	<body class="font-['Azeret_Mono'] bg-black text-white">
 		<header
-			class="fixed w-full px-4 py-2 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
+			class="fixed w-full px-4 py-0.3 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
 			<div class="container mx-auto flex items-center justify-between">
-				<h1 class="text-[14px]">
+				<h1 class="text-lg">
 					<a
 						href="{% url 'index' %}"
 						class="text-black no-underline hover:no-underline"
 						>TechNest</a
 					>
 				</h1>
-				<nav class="hidden md:flex items-center flex-grow justify-center">
+				<nav class="hidden md:flex items-center justify-center">
 					<ul class="flex space-x-8">
-						<li
-							><a
+						<li class="flex items-center">
+							<a
 								href="{% url 'index' %}"
-								class="text-[14px] relative group">
+								class="text-base relative group py-1">
 								Home
 								<span
-									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
-						></li>
-						<li
-							><a
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+							</a>
+						</li>
+						<li class="flex items-center">
+							<a
 								href="{% url 'shop' %}"
-								class="text-[14px] relative group">
+								class="text-base relative group py-1">
 								Shop
 								<span
-									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
-						></li>
-						<li
-							><a
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+							</a>
+						</li>
+						<li class="flex items-center">
+							<a
 								href="{% url 'sale' %}"
-								class="text-[14px] relative group">
+								class="text-base relative group py-1">
 								Sale
 								<span
-									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
-						></li>
-						<li
-							><a
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+							</a>
+						</li>
+						<li class="flex items-center">
+							<a
 								href="{% url 'help' %}"
-								class="text-[14px] relative group">
+								class="text-base relative group py-1">
 								Help
 								<span
-									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
-						></li>
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+							</a>
+						</li>
 					</ul>
 				</nav>
 				<div class="flex items-center space-x-4">
@@ -87,7 +89,7 @@
 								stroke-linejoin="round"
 								d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
 						</svg>
-						<span class="text-[14px]">Login</span>
+						<span class="text-base">Login</span>
 					</a>
 					<a
 						href="#cart"

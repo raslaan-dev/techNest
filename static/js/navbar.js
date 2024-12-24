@@ -1,25 +1,24 @@
 let lastScrollTop = 0;
 const navbar = document.querySelector('header');
-const navbarHeight = navbar.offsetHeight;
 let ticking = false;
 
 window.addEventListener('scroll', () => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (!ticking) {
         window.requestAnimationFrame(() => {
             if (scrollTop > lastScrollTop && scrollTop > 100) {
                 // Scrolling down - hide navbar completely
-                navbar.style.transform = `translate(-50%, -${navbarHeight + 20}px)`; // Added extra 20px to ensure it's hidden
+                navbar.style.transform = 'translate(-50%, -100%)'; // Combine horizontal center with vertical hide
             } else {
                 // Scrolling up - show navbar
-                navbar.style.transform = 'translate(-50%, 0)';
+                navbar.style.transform = 'translate(-50%, 0)'; // Maintain horizontal center
             }
-            
+
             lastScrollTop = scrollTop;
             ticking = false;
         });
-        
+
         ticking = true;
     }
 });
@@ -38,4 +37,4 @@ function toggleMobileMenu() {
 }
 
 mobileMenuButton?.addEventListener('click', toggleMobileMenu);
-overlay?.addEventListener('click', toggleMobileMenu); 
+overlay?.addEventListener('click', toggleMobileMenu);
