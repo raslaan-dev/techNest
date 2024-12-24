@@ -1,299 +1,516 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechNest</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body class="font-['Azeret_Mono'] bg-black text-white">
-    <header class="fixed w-full px-4 py-2 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
-        <div class="container mx-auto flex items-center justify-between">
-            <h1 class="text-[14px]">
-                <a href="/html/idex.html" class="text-black no-underline hover:no-underline">TechNest</a>
-            </h1>
-            <nav class="hidden md:flex items-center flex-grow justify-center">
-                <ul class="flex space-x-8">
-                    <li><a href="/html/idex.html" class="text-[14px] relative group">
-                        Home
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    </a></li>
-                    <li><a href="/html/shop.html" class="text-[14px] relative group">
-                        Shop
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    </a></li>
-                    <li><a href="/html/sale.html" class="text-[14px] relative group">
-                        Sale
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    </a></li>
-                    <li><a href="/html/help.html" class="text-[14px] relative group">
-                        Help
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    </a></li>
-                </ul>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <a href="#login" class="flex items-center space-x-2 text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
-                    <span class="text-[14px]">Login</span>
-                </a>
-                <a href="#cart" class="relative text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                    </svg>
-                </a>
-            </div>
-            <button class="md:hidden text-black">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-    </header>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Shop - TechNest</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="preconnect"
+			href="{% static 'https://fonts.googleapis.com' %}" />
+		<link
+			rel="preconnect"
+			href="{% static 'https://fonts.gstatic.com' %}"
+			crossorigin />
+		<link
+			href="{% static 'https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap' %}"
+			rel="stylesheet" />
 
-    <main class="container mx-auto px-4 pt-28">
-        <!-- Browse Section -->
-        <div class="flex flex-col md:flex-row gap-8">
-            <!-- Sidebar -->
-            <aside class="w-full md:w-64">
-                <h2 class="text-[14px] mb-4">Browse by</h2>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-purple-500 text-[14px]">All Products</a></li>
-                    <li><a href="#" class="hover:text-purple-500 text-[14px]">Best Sellers</a></li>
-                    <li><a href="#" class="hover:text-purple-500 text-[14px]">Accessories</a></li>
-                    <li><a href="#" class="hover:text-purple-500 text-[14px]">Speakers & Headphones</a></li>
-                    <li><a href="#" class="hover:text-purple-500 text-[14px]">Home Appliances</a></li>
-                    <li><a href="#" class="hover:text-purple-500 text-[14px]">Smart Phones & Watches</a></li>
-                    <li><a href="#" class="hover:text-purple-500 text-[14px]">Sale</a></li>
-                </ul>
+		<link
+			rel="stylesheet"
+			href="{% static 'css/style.css' %}" />
+	</head>
+	<body class="font-['Azeret_Mono']">
+		<div class="cursor"></div>
+		<header
+			class="fixed w-full px-4 py-2 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
+			<div class="container mx-auto flex items-center justify-between">
+				<h1 class="text-[14px]">
+					<a
+						href="{% url 'index' %}"
+						class="text-black no-underline hover:no-underline"
+						>TechNest</a
+					>
+				</h1>
+				<nav class="hidden md:flex items-center flex-grow justify-center">
+					<ul class="flex space-x-8">
+						<li
+							><a
+								href="{% url 'index' %}"
+								class="text-[14px] relative group">
+								Home
+								<span
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
+						></li>
+						<li
+							><a
+								href="{% url 'shop' %}"
+								class="text-[14px] relative group">
+								Shop
+								<span
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
+						></li>
+						<li
+							><a
+								href="{% url 'sale' %}"
+								class="text-[14px] relative group">
+								Sale
+								<span
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
+						></li>
+						<li
+							><a
+								href="{% url 'help' %}"
+								class="text-[14px] relative group">
+								Help
+								<span
+									class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span> </a
+						></li>
+					</ul>
+				</nav>
+				<div class="flex items-center space-x-4">
+					<a
+						href="#login"
+						class="flex items-center space-x-2 text-black">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+						</svg>
+						<span class="text-[14px]">Login</span>
+					</a>
+					<a
+						href="#cart"
+						class="relative text-black">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+						</svg>
+					</a>
+				</div>
+				<button class="md:hidden text-black">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+				</button>
+			</div>
+		</header>
 
-                <div class="mt-8">
-                    <h2 class="text-[14px] mb-4">Filter by</h2>
-                    <div class="mb-4">
-                        <h3 class="text-[14px] mb-2">Price</h3>
-                        <div class="flex items-center gap-2">
-                            <span class="text-[14px]">$100.00</span>
-                            <div class="h-[1px] w-4 bg-white"></div>
-                            <span class="text-[14px]">$2,000.00</span>
-                        </div>
-                        <input type="range" min="100" max="2000" class="w-full mt-2">
-                    </div>
-                </div>
-            </aside>
+		<main class="container mx-auto px-4 pt-28">
+			<!-- Browse Section -->
+			<div class="flex flex-col md:flex-row gap-8">
+				<!-- Sidebar -->
+				<aside class="w-full md:w-64">
+					<h2 class="text-[14px] mb-4">Browse by</h2>
+					<ul class="space-y-2">
+						<li
+							><a
+								href="#"
+								class="text-purple-500 text-[14px]"
+								>All Products</a
+							></li
+						>
+						<li
+							><a
+								href="#"
+								class="hover:text-purple-500 text-[14px]"
+								>Best Sellers</a
+							></li
+						>
+						<li
+							><a
+								href="#"
+								class="hover:text-purple-500 text-[14px]"
+								>Accessories</a
+							></li
+						>
+						<li
+							><a
+								href="#"
+								class="hover:text-purple-500 text-[14px]"
+								>Speakers & Headphones</a
+							></li
+						>
+						<li
+							><a
+								href="#"
+								class="hover:text-purple-500 text-[14px]"
+								>Home Appliances</a
+							></li
+						>
+						<li
+							><a
+								href="#"
+								class="hover:text-purple-500 text-[14px]"
+								>Smart Phones & Watches</a
+							></li
+						>
+						<li
+							><a
+								href="#"
+								class="hover:text-purple-500 text-[14px]"
+								>Sale</a
+							></li
+						>
+					</ul>
 
-            <!-- Products Section -->
-            <div class="flex-1">
-                <div class="flex justify-between items-center mb-8">
-                    <div>
-                        <h1 class="text-[17px] mb-2">All Products</h1>
-                        <p class="text-[14px] text-gray-400">Discover our curated collection of premium tech products.</p>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[14px]">Sort by:</span>
-                        <select class="bg-black border border-white px-2 py-1 text-[14px]">
-                            <option>Recommended</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                            <option>Newest</option>
-                        </select>
-                    </div>
-                </div>
+					<div class="mt-8">
+						<h2 class="text-[14px] mb-4">Filter by</h2>
+						<div class="mb-4">
+							<h3 class="text-[14px] mb-2">Price</h3>
+							<div class="flex items-center gap-2">
+								<span class="text-[14px]">$100.00</span>
+								<div class="h-[1px] w-4 bg-white"></div>
+								<span class="text-[14px]">$2,000.00</span>
+							</div>
+							<input
+								type="range"
+								min="100"
+								max="2000"
+								class="w-full mt-2" />
+						</div>
+					</div>
+				</aside>
 
-                <!-- Product Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[8px] w-full">
-                    <!-- Product Card 1 -->
-                    <div class="group">
-                        <div class="relative aspect-[2/3] w-full">
-                            <img src="/images/float headphone.webp" alt="Headphones" class="w-full h-full object-cover rounded-lg">
-                            <div class="absolute top-2 left-2">
-                                <span class="bg-white text-black px-2 py-1 text-[14px] rounded">Sale</span>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <h3 class="text-[14px]">Wireless Headphones</h3>
-                            <p class="text-gray-400 text-[14px]">$299.99</p>
-                        </div>
-                    </div>
+				<!-- Products Section -->
+				<div class="flex-1">
+					<div class="flex justify-between items-center mb-8">
+						<div>
+							<h1 class="text-[17px] mb-2">All Products</h1>
+							<p class="text-[14px] text-gray-400"
+								>Discover our curated collection of premium tech products.</p
+							>
+						</div>
+						<div class="flex items-center gap-2">
+							<span class="text-[14px]">Sort by:</span>
+							<select class="bg-black border border-white px-2 py-1 text-[14px]">
+								<option>Recommended</option>
+								<option>Price: Low to High</option>
+								<option>Price: High to Low</option>
+								<option>Newest</option>
+							</select>
+						</div>
+					</div>
 
-                    <!-- Product Card 2 -->
-                    <div class="group">
-                        <div class="relative aspect-[2/3] w-full">
-                            <img src="/images/ove light space smrtphone.webp" alt="Smartphone" class="w-full h-full object-cover rounded-lg">
-                            <div class="absolute top-2 left-2">
-                                <span class="bg-white text-black px-2 py-1 text-[14px] rounded">Sale</span>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <h3 class="text-[14px]">Premium Smartphone</h3>
-                            <p class="text-gray-400 text-[14px]">$999.99</p>
-                        </div>
-                    </div>
+					<!-- Product Grid -->
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[8px] w-full">
+						<!-- Product Card 1 -->
+						<div class="group">
+							<div class="relative aspect-[2/3] w-full">
+								<img
+									src="/images/float headphone.webp"
+									alt="Headphones"
+									class="w-full h-full object-cover rounded-lg" />
+								<div class="absolute top-2 left-2">
+									<span class="bg-white text-black px-2 py-1 text-[14px] rounded"
+										>Sale</span
+									>
+								</div>
+							</div>
+							<div class="mt-4">
+								<h3 class="text-[14px]">Wireless Headphones</h3>
+								<p class="text-gray-400 text-[14px]">$299.99</p>
+							</div>
+						</div>
 
-                    <!-- Product Card 3 -->
-                    <div class="group">
-                        <div class="relative aspect-[2/3] w-full">
-                            <img src="/images/oled flat.webp" alt="Smart TV" class="w-full h-full object-cover rounded-lg">
-                        </div>
-                        <div class="mt-4">
-                            <h3 class="text-[14px]">4K Smart TV</h3>
-                            <p class="text-gray-400 text-[14px]">$1,499.99</p>
-                        </div>
-                    </div>
+						<!-- Product Card 2 -->
+						<div class="group">
+							<div class="relative aspect-[2/3] w-full">
+								<img
+									src="/images/ove light space smrtphone.webp"
+									alt="Smartphone"
+									class="w-full h-full object-cover rounded-lg" />
+								<div class="absolute top-2 left-2">
+									<span class="bg-white text-black px-2 py-1 text-[14px] rounded"
+										>Sale</span
+									>
+								</div>
+							</div>
+							<div class="mt-4">
+								<h3 class="text-[14px]">Premium Smartphone</h3>
+								<p class="text-gray-400 text-[14px]">$999.99</p>
+							</div>
+						</div>
 
-                    <!-- Product Card 4 -->
-                    <div class="group">
-                        <div class="relative aspect-[2/3] w-full">
-                            <img src="/images/oled flat.webp" alt="Smart TV" class="w-full h-full object-cover rounded-lg">
-                        </div>
-                        <div class="mt-4">
-                            <h3 class="text-[14px]">4K Smart TV</h3>
-                            <p class="text-gray-400 text-[14px]">$1,499.99</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+						<!-- Product Card 3 -->
+						<div class="group">
+							<div class="relative aspect-[2/3] w-full">
+								<img
+									src="/images/oled flat.webp"
+									alt="Smart TV"
+									class="w-full h-full object-cover rounded-lg" />
+							</div>
+							<div class="mt-4">
+								<h3 class="text-[14px]">4K Smart TV</h3>
+								<p class="text-gray-400 text-[14px]">$1,499.99</p>
+							</div>
+						</div>
 
-    <footer class="bg-purple-600 text-[#f2f2f2] py-10 relative">
-        <div class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-black to-purple-600"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-                <div>
-                    <h3 class="font-bold mb-2">Have a Question?</h3>
-                    <a href="/html/help.html" class="block mb-2 relative group inline-block">
-                        <span class="relative">
-                            Explore Our Help Center
-                            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                    <a href="/html/help.html" class="border border-[#f2f2f2] px-4 py-2 mt-2 transition-all duration-500 ease-in-out hover:bg-[#f2f2f2] hover:text-black inline-block">View More</a>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-2">Shop</h3>
-                    <div class="flex flex-col space-y-2">
-                        <a href="/html/shop.html" class="relative group inline-block">
-                            <span class="relative">
-                                All Products
-                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                            </span>
-                        </a>
-                        <a href="/html/shop.html" class="relative group inline-block">
-                            <span class="relative">
-                                Best Sellers
-                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                            </span>
-                        </a>
-                        <a href="/html/sale.html" class="relative group inline-block">
-                            <span class="relative">
-                                Sale
-                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-2">Contact</h3>
-                    <p class="mb-2">info@technest.com</p>
-                    <p class="mb-2">Villa College (QI Campus), Boduthakurufaanu Magu, Malé</p>
-                    <p>123-456-7890</p>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-2">Follow</h3>
-                    <div class="flex flex-col space-y-2">
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="relative group inline-block">
-                            <span class="relative">
-                                Instagram
-                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                            </span>
-                        </a>
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="relative group inline-block">
-                            <span class="relative">
-                                Facebook
-                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                            </span>
-                        </a>
-                        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" class="relative group inline-block">
-                            <span class="relative">
-                                TikTok
-                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                            </span>
-                        </a>
-                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="relative group inline-block">
-                            <span class="relative">
-                                YouTube
-                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-2">Legal</h3>
-                    <a href="/html/T&C.html" class="block mb-2 relative group inline-block">
-                        <span class="relative">
-                            Terms & Conditions
-                            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                    <a href="/html/privacy.html" class="block mb-2 relative group inline-block">
-                        <span class="relative">
-                            Privacy Policy
-                            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                    <a href="/html/shipping.html" class="block mb-2 relative group inline-block">
-                        <span class="relative">
-                            Shipping Policy
-                            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                    <a href="/html/refund.html" class="block mb-2 relative group inline-block">
-                        <span class="relative">
-                            Refund Policy
-                            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                    <a href="/html/accessibility.html" class="block mb-2 relative group inline-block">
-                        <span class="relative">
-                            Accessibility Statement
-                            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div class="text-center mt-8">
-                <p>&copy; 2024 by TechNest. Built on 
-                    <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" class="relative group inline-block">
-                        <span class="relative">
-                            Cursor
-                            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
-                        </span>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </footer>
+						<!-- Product Card 4 -->
+						<div class="group">
+							<div class="relative aspect-[2/3] w-full">
+								<img
+									src="/images/oled flat.webp"
+									alt="Smart TV"
+									class="w-full h-full object-cover rounded-lg" />
+							</div>
+							<div class="mt-4">
+								<h3 class="text-[14px]">4K Smart TV</h3>
+								<p class="text-gray-400 text-[14px]">$1,499.99</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 
-    <script src="/js/navbar.js"></script>
+		<footer class="bg-purple-600 text-[#f2f2f2] py-10 relative">
+			<div
+				class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-black to-purple-600"></div>
+			<div class="container mx-auto px-4 relative z-10">
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+					<div>
+						<h3 class="font-bold mb-2">Have a Question?</h3>
+						<a
+							href="/html/help.html"
+							class="block mb-2 relative group inline-block">
+							<span class="relative">
+								Explore Our Help Center
+								<span
+									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</a>
+						<a
+							href="/html/help.html"
+							class="border border-[#f2f2f2] px-4 py-2 mt-2 transition-all duration-500 ease-in-out hover:bg-[#f2f2f2] hover:text-black inline-block"
+							>View More</a
+						>
+					</div>
+					<div>
+						<h3 class="font-bold mb-2">Shop</h3>
+						<div class="flex flex-col space-y-2">
+							<a
+								href="/html/shop.html"
+								class="relative group inline-block">
+								<span class="relative">
+									All Products
+									<span
+										class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+								</span>
+							</a>
+							<a
+								href="/html/shop.html"
+								class="relative group inline-block">
+								<span class="relative">
+									Best Sellers
+									<span
+										class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+								</span>
+							</a>
+							<a
+								href="/html/sale.html"
+								class="relative group inline-block">
+								<span class="relative">
+									Sale
+									<span
+										class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+								</span>
+							</a>
+						</div>
+					</div>
+					<div>
+						<h3 class="font-bold mb-2">Contact</h3>
+						<p class="mb-2">info@technest.com</p>
+						<p class="mb-2">Villa College (QI Campus), Boduthakurufaanu Magu, Malé</p>
+						<p>123-456-7890</p>
+					</div>
+					<div>
+						<h3 class="font-bold mb-2">Follow</h3>
+						<div class="flex flex-col space-y-2">
+							<a
+								href="https://www.instagram.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="relative group inline-block">
+								<span class="relative">
+									Instagram
+									<span
+										class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+								</span>
+							</a>
+							<a
+								href="https://www.facebook.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="relative group inline-block">
+								<span class="relative">
+									Facebook
+									<span
+										class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+								</span>
+							</a>
+							<a
+								href="https://www.tiktok.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="relative group inline-block">
+								<span class="relative">
+									TikTok
+									<span
+										class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+								</span>
+							</a>
+							<a
+								href="https://www.youtube.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="relative group inline-block">
+								<span class="relative">
+									YouTube
+									<span
+										class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+								</span>
+							</a>
+						</div>
+					</div>
+					<div>
+						<h3 class="font-bold mb-2">Legal</h3>
+						<a
+							href="/html/T&C.html"
+							class="block mb-2 relative group inline-block">
+							<span class="relative">
+								Terms & Conditions
+								<span
+									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</a>
+						<a
+							href="/html/privacy.html"
+							class="block mb-2 relative group inline-block">
+							<span class="relative">
+								Privacy Policy
+								<span
+									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</a>
+						<a
+							href="/html/shipping.html"
+							class="block mb-2 relative group inline-block">
+							<span class="relative">
+								Shipping Policy
+								<span
+									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</a>
+						<a
+							href="/html/refund.html"
+							class="block mb-2 relative group inline-block">
+							<span class="relative">
+								Refund Policy
+								<span
+									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</a>
+						<a
+							href="/html/accessibility.html"
+							class="block mb-2 relative group inline-block">
+							<span class="relative">
+								Accessibility Statement
+								<span
+									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</a>
+					</div>
+				</div>
+				<div class="text-center mt-8">
+					<p
+						>&copy; 2024 by TechNest. Built on
+						<a
+							href="https://cursor.sh"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="relative group inline-block">
+							<span class="relative">
+								Cursor
+								<span
+									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</a>
+					</p>
+				</div>
+			</div>
+		</footer>
 
-    <!-- Mobile menu (hidden by default) -->
-    <div class="md:hidden">
-        <div class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" id="mobile-menu-overlay"></div>
-        <div class="fixed right-0 top-0 w-64 h-full bg-black z-50 transform translate-x-full transition-transform duration-200 ease-in-out" id="mobile-menu">
-            <div class="p-4">
-                <ul class="space-y-4">
-                    <li><a href="#home" class="text-[#f2f2f2] text-[14px] block">Home</a></li>
-                    <li><a href="#shop" class="text-[#f2f2f2] text-[14px] block">Shop</a></li>
-                    <li><a href="#sale" class="text-[#f2f2f2] text-[14px] block">Sale</a></li>
-                    <li><a href="#help" class="text-[#f2f2f2] text-[14px] block">Help</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</body>
+		<script src="/js/navbar.js"></script>
+
+		<!-- Mobile menu (hidden by default) -->
+		<div class="md:hidden">
+			<div
+				class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+				id="mobile-menu-overlay"></div>
+			<div
+				class="fixed right-0 top-0 w-64 h-full bg-black z-50 transform translate-x-full transition-transform duration-200 ease-in-out"
+				id="mobile-menu">
+				<div class="p-4">
+					<ul class="space-y-4">
+						<li
+							><a
+								href="#home"
+								class="text-[#f2f2f2] text-[14px] block"
+								>Home</a
+							></li
+						>
+						<li
+							><a
+								href="#shop"
+								class="text-[#f2f2f2] text-[14px] block"
+								>Shop</a
+							></li
+						>
+						<li
+							><a
+								href="#sale"
+								class="text-[#f2f2f2] text-[14px] block"
+								>Sale</a
+							></li
+						>
+						<li
+							><a
+								href="#help"
+								class="text-[#f2f2f2] text-[14px] block"
+								>Help</a
+							></li
+						>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
