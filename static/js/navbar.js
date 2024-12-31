@@ -9,10 +9,10 @@ window.addEventListener('scroll', () => {
         window.requestAnimationFrame(() => {
             if (scrollTop > lastScrollTop && scrollTop > 100) {
                 // Scrolling down - hide navbar completely
-                navbar.style.transform = 'translate(-50%, -100%)'; // Combine horizontal center with vertical hide
+                navbar.style.transform = 'translate(-50%, -200%)'; // Increased even more to ensure complete hide
             } else {
                 // Scrolling up - show navbar
-                navbar.style.transform = 'translate(-50%, 0)'; // Maintain horizontal center
+                navbar.style.transform = 'translate(-50%, 0)';
             }
 
             lastScrollTop = scrollTop;

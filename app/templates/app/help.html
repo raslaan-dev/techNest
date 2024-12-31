@@ -24,8 +24,8 @@
 	</head>
 	<body class="font-['Azeret_Mono'] bg-black text-white">
 		<header
-			class="fixed w-full px-4 py-0.3 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
-			<div class="container mx-auto flex items-center justify-between">
+			class="fixed w-full h-[35px] px-4 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
+			<div class="container mx-auto flex items-center justify-between h-full">
 				<h1 class="text-lg">
 					<a
 						href="{% url 'index' %}"
@@ -75,7 +75,7 @@
 				</nav>
 				<div class="flex items-center space-x-4">
 					<a
-						href="#login"
+						href="{% url 'login' %}"
 						class="flex items-center space-x-2 text-black">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@
 						<span class="text-base">Login</span>
 					</a>
 					<a
-						href="#cart"
+						href="{% url 'cart' %}"
 						class="relative text-black">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -219,7 +219,7 @@
 					<div>
 						<h3 class="font-bold mb-2">Have a Question?</h3>
 						<a
-							href="/html/help.html"
+							href="{% url 'help' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Explore Our Help Center
@@ -228,7 +228,7 @@
 							</span>
 						</a>
 						<a
-							href="/html/help.html"
+							href="{% url 'help' %}"
 							class="border border-[#f2f2f2] px-4 py-2 mt-2 transition-all duration-500 ease-in-out hover:bg-[#f2f2f2] hover:text-black inline-block"
 							>View More</a
 						>
@@ -237,7 +237,7 @@
 						<h3 class="font-bold mb-2">Shop</h3>
 						<div class="flex flex-col space-y-2">
 							<a
-								href="/html/shop.html"
+								href="{% url 'shop' %}"
 								class="relative group inline-block">
 								<span class="relative">
 									All Products
@@ -246,7 +246,7 @@
 								</span>
 							</a>
 							<a
-								href="/html/shop.html"
+								href="{% url 'shop' %}"
 								class="relative group inline-block">
 								<span class="relative">
 									Best Sellers
@@ -255,7 +255,7 @@
 								</span>
 							</a>
 							<a
-								href="/html/sale.html"
+								href="{% url 'sale' %}"
 								class="relative group inline-block">
 								<span class="relative">
 									Sale
@@ -323,7 +323,7 @@
 					<div>
 						<h3 class="font-bold mb-2">Legal</h3>
 						<a
-							href="/html/T&C.html"
+							href="{% url 'terms' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Terms & Conditions
@@ -332,7 +332,7 @@
 							</span>
 						</a>
 						<a
-							href="/html/privacy.html"
+							href="{% url 'privacy' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Privacy Policy
@@ -341,7 +341,7 @@
 							</span>
 						</a>
 						<a
-							href="/html/shipping.html"
+							href="{% url 'shipping' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Shipping Policy
@@ -350,7 +350,7 @@
 							</span>
 						</a>
 						<a
-							href="/html/refund.html"
+							href="{% url 'refund' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Refund Policy
@@ -359,7 +359,7 @@
 							</span>
 						</a>
 						<a
-							href="/html/accessibility.html"
+							href="{% url 'accessibility' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Accessibility Statement
@@ -371,9 +371,9 @@
 				</div>
 				<div class="text-center mt-8">
 					<p
-						>&copy; 2024 by TechNest. Built on
+						>&copy; 2024 by TechNest. Built with help from
 						<a
-							href="https://cursor.sh"
+							href="https://www.cursor.com/"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="relative group inline-block">
@@ -389,9 +389,6 @@
 		</footer>
 
 		<script src="{% static 'js/navbar.js' %}"></script>
-		{% comment %}
-		<script src="{% static 'js/cursor.js' %}"></script>
-		{% endcomment %}
 
 		<!-- Mobile menu (hidden by default) -->
 		<div class="md:hidden">
@@ -405,28 +402,28 @@
 					<ul class="space-y-4">
 						<li
 							><a
-								href="#home"
+								href="{% url 'index' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Home</a
 							></li
 						>
 						<li
 							><a
-								href="#shop"
+								href="{% url 'shop' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Shop</a
 							></li
 						>
 						<li
 							><a
-								href="#sale"
+								href="{% url 'sale' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Sale</a
 							></li
 						>
 						<li
 							><a
-								href="#help"
+								href="{% url 'help' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Help</a
 							></li

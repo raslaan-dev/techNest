@@ -24,13 +24,13 @@
 	</head>
 	<body class="font-['Azeret_Mono'] bg-black text-white">
 		<header
-			class="fixed w-full px-4 py-0.3 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
-			<div class="container mx-auto flex items-center justify-between">
+			class="fixed w-full h-[35px] px-4 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
+			<div class="container mx-auto flex items-center justify-between h-full">
 				<h1 class="text-lg">
 					<a
 						href="{% url 'index' %}"
 						class="text-black no-underline hover:no-underline"
-						>TechNest</a
+							>TechNest</a
 					>
 				</h1>
 				<nav class="hidden md:flex items-center justify-center">
@@ -75,7 +75,7 @@
 				</nav>
 				<div class="flex items-center space-x-4">
 					<a
-						href="#login"
+						href="{% url 'login' %}"
 						class="flex items-center space-x-2 text-black">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@
 						<span class="text-base">Login</span>
 					</a>
 					<a
-						href="#cart"
+						href="{% url 'cart' %}"
 						class="relative text-black">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -150,8 +150,8 @@
 			</div>
 		</section>
 
-		<section id="products" class="px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 py-10 bg-black">
-			<div class="container mx-auto max-w-[2000px]">
+		<section id="products" class="px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 py-20 min-h-screen bg-black">
+			<div class="container mx-auto max-w-[2000px] h-full">
 				<div class="products-header flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
 					<h2 class="text-[14px] md:text-[16px] 2xl:text-[18px] text-[#f2f2f2] font-normal text-center sm:text-left w-full sm:w-auto">Trending Now 🔥</h2>
 					<a href="{% static 'html/shop.html' %}"
@@ -161,45 +161,45 @@
 						Discover More
 					</a>
 				</div>
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 container mx-auto px-4">
-					<div class="product group bg-transparent">
-						<div class="relative overflow-hidden rounded-lg aspect-square">
+				<div class="flex flex-nowrap gap-4 sm:gap-6 lg:gap-8 overflow-x-auto">
+					<div class="product group bg-transparent min-w-[250px] sm:min-w-[300px] h-[600px] sm:h-[650px]">
+						<div class="relative overflow-hidden rounded-lg h-[500px] sm:h-[550px]">
 							<img src="{% static 'img/360 mini portable speaker.webp' %}"
 								alt="360 Mini Portable Speaker"
-								class="absolute inset-0 w-full h-full object-contain p-4" />
+								class="w-full h-full object-contain transition-transform duration-300 hover:scale-105" />
 						</div>
 						<div class="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
 							<h3 class="text-[16px] sm:text-[18px] lg:text-[20px] text-[#f2f2f2] font-normal">360 Mini Portable Speaker</h3>
 							<p class="text-[16px] sm:text-[18px] lg:text-[20px] text-[#f2f2f2]">$100.00</p>
 						</div>
 					</div>
-					<div class="product group bg-transparent">
-						<div class="relative overflow-hidden rounded-lg aspect-square">
+					<div class="product group bg-transparent min-w-[250px] sm:min-w-[300px] h-[600px] sm:h-[650px]">
+						<div class="relative overflow-hidden rounded-lg h-[500px] sm:h-[550px]">
 							<img src="{% static 'img/turn5 portable speaker.webp' %}"
 								alt="Turn5 Portable Speaker"
-								class="absolute inset-0 w-full h-full object-contain p-4" />
+								class="w-full h-full object-contain transition-transform duration-300 hover:scale-105" />
 						</div>
 						<div class="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
 							<h3 class="text-[16px] sm:text-[18px] lg:text-[20px] text-[#f2f2f2] font-normal">Turn5 Portable Bluetooth Speaker With Handle</h3>
 							<p class="text-[16px] sm:text-[18px] lg:text-[20px] text-[#f2f2f2]">$160.00</p>
 						</div>
 					</div>
-					<div class="product group bg-transparent">
-						<div class="relative overflow-hidden rounded-lg aspect-square">
+					<div class="product group bg-transparent min-w-[250px] sm:min-w-[300px] h-[600px] sm:h-[650px]">
+						<div class="relative overflow-hidden rounded-lg h-[500px] sm:h-[550px]">
 							<img src="{% static 'img/ove light space smrtphone.webp' %}"
 								alt="OVE Light Space Smartphone"
-								class="absolute inset-0 w-full h-full object-contain p-4" />
+								class="w-full h-full object-contain transition-transform duration-300 hover:scale-105" />
 						</div>
 						<div class="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
 							<h3 class="text-[16px] sm:text-[18px] lg:text-[20px] text-[#f2f2f2] font-normal">OVE Light Space 5G Smartphone, 128GB</h3>
 							<p class="text-[16px] sm:text-[18px] lg:text-[20px] text-[#f2f2f2]">$750.00</p>
 						</div>
 					</div>
-					<div class="product group bg-transparent">
-						<div class="relative overflow-hidden rounded-lg aspect-square">
+					<div class="product group bg-transparent min-w-[250px] sm:min-w-[300px] h-[600px] sm:h-[650px]">
+						<div class="relative overflow-hidden rounded-lg h-[500px] sm:h-[550px]">
 							<img src="{% static 'img/space buds ture.webp' %}"
 								alt="Space Buds True Wireless"
-								class="absolute inset-0 w-full h-full object-contain p-4" />
+								class="w-full h-full object-contain transition-transform duration-300 hover:scale-105" />
 						</div>
 						<div class="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
 							<h3 class="text-[16px] sm:text-[18px] lg:text-[20px] text-[#f2f2f2] font-normal">Space Buds True Wireless Earbud Headphones</h3>
@@ -280,7 +280,7 @@
 					<div>
 						<h3 class="font-bold mb-2">Have a Question?</h3>
 						<a
-							href="{% static 'html/help.html' %}"
+							href="{% url 'help' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Explore Our Help Center
@@ -289,7 +289,7 @@
 							</span>
 						</a>
 						<a
-							href="{% static 'html/help.html' %}"
+							href="{% url 'help' %}"
 							class="border border-[#f2f2f2] px-4 py-2 mt-2 transition-all duration-500 ease-in-out hover:bg-[#f2f2f2] hover:text-black inline-block"
 							>View More</a
 						>
@@ -298,7 +298,7 @@
 						<h3 class="font-bold mb-2">Shop</h3>
 						<div class="flex flex-col space-y-2">
 							<a
-								href="{% static 'html/shop.html' %}"
+								href="{% url 'shop' %}"
 								class="relative group inline-block">
 								<span class="relative">
 									All Products
@@ -307,7 +307,7 @@
 								</span>
 							</a>
 							<a
-								href="{% static 'html/shop.html' %}"
+								href="{% url 'shop' %}"
 								class="relative group inline-block">
 								<span class="relative">
 									Best Sellers
@@ -316,7 +316,7 @@
 								</span>
 							</a>
 							<a
-								href="{% static 'html/sale.html' %}"
+								href="{% url 'sale' %}"
 								class="relative group inline-block">
 								<span class="relative">
 									Sale
@@ -384,7 +384,7 @@
 					<div>
 						<h3 class="font-bold mb-2">Legal</h3>
 						<a
-							href="{% static 'html/T&C.html' %}"
+							href="{% url 'terms' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Terms & Conditions
@@ -393,7 +393,7 @@
 							</span>
 						</a>
 						<a
-							href="{% static 'html/privacy.html' %}"
+							href="{% url 'privacy' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Privacy Policy
@@ -402,7 +402,7 @@
 							</span>
 						</a>
 						<a
-							href="{% static 'html/shipping.html' %}"
+							href="{% url 'shipping' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Shipping Policy
@@ -411,7 +411,7 @@
 							</span>
 						</a>
 						<a
-							href="{% static 'html/refund.html' %}"
+							href="{% url 'refund' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Refund Policy
@@ -420,7 +420,7 @@
 							</span>
 						</a>
 						<a
-							href="{% static 'html/accessibility.html' %}"
+							href="{% url 'accessibility' %}"
 							class="block mb-2 relative group inline-block">
 							<span class="relative">
 								Accessibility Statement
@@ -434,12 +434,12 @@
 					<p
 						>&copy; 2024 by TechNest. Built with help from
 						<a
-							href="https://sourcegraph.com/cody"
+							href="https://www.cursor.com/"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="relative group inline-block">
 							<span class="relative">
-								Cody
+								Cursor
 								<span
 									class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
 							</span>
@@ -451,7 +451,7 @@
 		
 		
 		<script src="{% static 'js/navbar.js' %}"></script>
-		{% comment %} <script src="{% static 'js/cursor.js' %}"></script> {% endcomment %}
+		
 
 		<!-- Mobile menu (hidden by default) -->
 		<div class="md:hidden">
@@ -465,28 +465,28 @@
 					<ul class="space-y-4">
 						<li
 							><a
-								href="{% static 'html/index.html' %}"
+								href="{% url 'index' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Home</a
 							></li
 						>
 						<li
 							><a
-								href="{% static 'html/shop.html' %}"
+								href="{% url 'shop' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Shop</a
 							></li
 						>
 						<li
 							><a
-								href="{% static 'html/sale.html' %}"
+								href="{% url 'sale' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Sale</a
 							></li
 						>
 						<li
 							><a
-								href="{% static 'html/help.html' %}"
+								href="{% url 'help' %}"
 								class="text-[#f2f2f2] text-[14px] block"
 								>Help</a
 							></li
@@ -498,3 +498,4 @@
 	</body>
 </html>
 
+	

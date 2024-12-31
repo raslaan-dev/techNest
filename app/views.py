@@ -16,3 +16,24 @@ def sale(request):
 
 def help(request):
     return render(request, 'app/help.html')
+
+def login(request):
+    return render(request, 'app/login.html')
+
+def cart(request):
+    return render(request, 'app/cart.html')
+
+def terms(request):
+    return render(request, 'app/terms.html')
+
+def accessibility(request):
+    return render(request, 'app/accessibility.html')
+
+def shipping(request):
+    return render(request, 'app/shipping.html')
+
+def privacy(request):
+    return render(request, 'app/privacy.html')
+
+def refund(request):
+    return render(request, 'app/refund.html')
