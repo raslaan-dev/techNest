@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>Your Cart</h2>
+    {% if cart_items %}
+        <div class="cart-items">
+            {% for item in cart_items %}
+            <div class="cart-item card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-2">
+                        <img src="{{ item.product.image.url }}" class="img-fluid rounded-start" alt="{{ item.product.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.product.name }}</h5>
+                            <p class="card-text">Price: ${{ item.product.price }}</p>
+                            <div class="quantity-controls">
+                                <button class="btn btn-sm btn-secondary update-quantity" data-item="{{ item.id }}" data-action="decrease">-</button>
+                                <span class="quantity mx-2">{{ item.quantity }}</span>
+                                <button class="btn btn-sm btn-secondary update-quantity" data-item="{{ item.id }}" data-action="increase">+</button>
+                                <button class="btn btn-sm btn-danger remove-item ms-3" data-item="{{ item.id }}">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="cart-summary mt-4">
+                <h4>Total: $<span id="cart-total">{{ cart_total }}</span></h4>
+                <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a>
+            </div>
+        </div>
+    {% else %}
+        <p>Your cart is empty.</p>
+        <a href="{% url 'products' %}" class="btn btn-primary">Continue Shopping</a>
+    {% endif %}
+</div>
+{% endblock %}

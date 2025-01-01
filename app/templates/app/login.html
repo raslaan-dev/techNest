@@ -1,0 +1,75 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+<!-- Add Azeret Mono font -->
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="min-h-screen flex items-center justify-center bg-neutral-950 py-12 px-4 sm:px-6 lg:px-8 font-['Azeret_Mono'] relative">
+    <!-- Background image container -->
+    <div class="absolute inset-0 z-0">
+        <img src="{% static 'img/Smartwatch-02-Header.avif' %}" alt="Background" class="w-full h-full object-cover opacity-30">
+    </div>
+    
+    <!-- Content container with relative positioning -->
+    <div class="max-w-md w-full space-y-8 relative z-10">
+        <!-- Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="rounded-md p-4 mb-4 {% if message.tags == 'error' %}bg-red-50 text-red-700{% else %}bg-green-50 text-green-700{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Login Card -->
+        <div class="bg-white shadow-[0_8px_30px_rgb(255,255,255,0.1)] rounded-lg overflow-hidden transform transition-all hover:-translate-y-2 duration-300">
+            <!-- Card Header -->
+            <div class="bg-white px-6 py-4">
+                <h2 class="text-left text-2xl font-bold text-neutral-950">Welcome Back
+                    <img src="{% static 'img/logo.png' %}" alt="Logo" class="inline-block h-8 ml-2 float-right">
+                </h2>
+                <div class="border-b-4 border-purple-600 w-1/4 mt-2"></div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="px-6 py-8">
+                <form method="POST" action="{% url 'login' %}" class="space-y-6">
+                    {% csrf_token %}
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-neutral-950">Username</label>
+                        <input type="text" id="username" name="username" required
+                               class="mt-1 block w-full px-3 py-3 border border-neutral-300 rounded-md shadow-sm bg-white text-neutral-950 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-neutral-950">Password</label>
+                        <input type="password" id="password" name="password" required
+                               class="mt-1 block w-full px-3 py-3 border border-neutral-300 rounded-md shadow-sm bg-white text-neutral-950 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+                    </div>
+
+                    <div>
+                        <button type="submit"
+                                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-neutral-950 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-600 transition-colors duration-200">
+                            Sign In
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="px-6 py-4 bg-neutral-50 border-t border-neutral-100">
+                <p class="text-center text-sm text-neutral-600">
+                    Don't have an account? 
+                    <a href="{% url 'register' %}" class="font-medium text-purple-600 hover:text-purple-500 transition-colors duration-200">
+                        Create one now
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
