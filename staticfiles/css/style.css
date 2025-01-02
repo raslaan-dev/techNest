@@ -311,3 +311,14 @@ footer {
     mix-blend-mode: difference;
 }
  */
+
+
+ /* link color stagger effect */
+ .stagger-it .char {
+    transition: color 0.5s linear;
+    transition-delay: calc(0.04s * var(--char-index));
+}
+
+.stagger-it:hover .char {
+    color: #9333ea; /* Tailwind purple-600 */
+}
