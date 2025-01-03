@@ -13,6 +13,8 @@ function updateCartCount(count) {
 updateCartCount(itemCount);
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Cart JS loaded');
+
     // Add to cart functionality
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', async function() {
@@ -84,4 +86,37 @@ document.addEventListener('DOMContentLoaded', function() {
     function showMessage(message, type) {
         // Implement your message display logic here
     }
+
+    document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Delete button clicked');
+
+            const itemId = this.dataset.item;
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch(`/cart/remove/${itemId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrfToken,
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    this.closest('.cart-item').remove();
+
+                    const cartTotal = document.querySelector('.cart-total');
+                    if (cartTotal && data.cart_total !== undefined) {
+                        cartTotal.textContent = `$${data.cart_total}`;
+                    }
+
+                    if (data.is_empty) {
+                        window.location.reload();
+                    }
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
 }); 

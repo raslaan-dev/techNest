@@ -2,39 +2,428 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-5">
-    <h2>Your Cart</h2>
-    {% if cart_items %}
-        <div class="cart-items">
-            {% for item in cart_items %}
-            <div class="cart-item card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-2">
-                        <img src="{{ item.product.image.url }}" class="img-fluid rounded-start" alt="{{ item.product.name }}">
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    </head>
+    <body class="font-['Azeret_Mono'] bg-black text-white">
+        <header
+            class="fixed w-full h-[35px] px-4 bg-white/70 text-black z-50 transition-transform duration-500 ease-in-out rounded-xl shadow-lg mx-auto left-1/2 -translate-x-1/2 max-w-[calc(100%-40px)] mt-4 font-['Azeret_Mono']">
+            <div class="container mx-auto flex items-center justify-between h-full">
+                <h1 class="text-lg">
+                    <a
+                        href="{% url 'index' %}"
+                        class="text-black no-underline hover:no-underline"
+                        >TechNest</a
+                    >
+                </h1>
+                <nav class="hidden md:flex items-center justify-center">
+                    <ul class="flex space-x-8">
+                        <li class="flex items-center">
+                            <a
+                                href="{% url 'index' %}"
+                                class="text-base relative group py-1">
+                                Home
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <a
+                                href="{% url 'shop' %}"
+                                class="text-base relative group py-1">
+                                Shop
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <a
+                                href="{% url 'sale' %}"
+                                class="text-base relative group py-1">
+                                Sale
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <a
+                                href="{% url 'help' %}"
+                                class="text-base relative group py-1">
+                                Help
+                                <span
+                                    class="absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a
+                        href="{% url 'login' %}"
+                        class="flex items-center space-x-2 text-black">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6">
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        <span class="text-base">Login</span>
+                    </a>
+                    <a
+                        href="{% url 'cart' %}"
+                        class="relative text-black">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6">
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                        </svg>
+                    </a>
+                </div>
+                <button class="md:hidden text-black">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="min-h-screen bg-black text-white p-8 pt-24">
+            <div class="max-w-7xl mx-auto">
+                <!-- Cart Header -->
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-[17px] font-['Azeret_Mono']">My cart</h1>
+                    <h2 class="text-[17px] font-['Azeret_Mono']">Order summary</h2>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Cart Items -->
+                    <div class="flex-grow">
+                        {% if cart_items %}
+                            {% for item in cart_items %}
+                            <div class="flex gap-6 mb-6 pb-6 border-b border-neutral-800 cart-item">
+                                <div class="w-24 h-24">
+                                    <img src="{{ item.product.image.url }}" 
+                                         alt="{{ item.product.name }}" 
+                                         class="w-full h-full object-cover bg-neutral-900">
+                                </div>
+                                <div class="flex-grow flex justify-between">
+                                    <div>
+                                        <h3 class="text-[14px] font-['Azeret_Mono'] mb-2">{{ item.product.name }}</h3>
+                                        <div class="flex items-center gap-2">
+                                            {% if item.product.sale_price %}
+                                            <span class="text-[14px] font-['Azeret_Mono'] line-through text-neutral-500">${{ item.product.price }}</span>
+                                            <span class="text-[14px] font-['Azeret_Mono']">${{ item.product.sale_price }}</span>
+                                            {% else %}
+                                            <span class="text-[14px] font-['Azeret_Mono']">${{ item.product.price }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <!-- Quantity Controls -->
+                                        <div class="flex items-center border border-neutral-800 rounded">
+                                            <button class="px-3 py-1 text-[14px] font-['Azeret_Mono'] hover:bg-neutral-900 update-quantity" 
+                                                    data-item="{{ item.id }}" 
+                                                    data-action="decrease">−</button>
+                                            <span class="px-3 py-1 text-[14px] font-['Azeret_Mono'] border-x border-neutral-800">{{ item.quantity }}</span>
+                                            <button class="px-3 py-1 text-[14px] font-['Azeret_Mono'] hover:bg-neutral-900 update-quantity" 
+                                                    data-item="{{ item.id }}" 
+                                                    data-action="increase">+</button>
+                                        </div>
+                                        <!-- Item Total -->
+                                        <div class="w-24 text-right">
+                                            <span class="text-[14px] font-['Azeret_Mono']">${{ item.total_price }}</span>
+                                        </div>
+                                        <!-- Remove Button -->
+                                        <button class="text-neutral-400 hover:text-white remove-item" 
+                                                data-item="{{ item.id }}"
+                                                type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="text-center py-12">
+                                <p class="text-neutral-400 mb-4 font-['Azeret_Mono']">Your cart is empty</p>
+                                <a href="{% url 'shop' %}" 
+                                   class="inline-block px-6 py-2 bg-white text-black text-[14px] font-['Azeret_Mono'] hover:bg-neutral-100 transition-colors">
+                                    Continue Shopping
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        <!-- Promo Code and Notes -->
+                        <div class="space-y-4 mt-8">
+                            <button class="flex items-center gap-2 text-[14px] font-['Azeret_Mono'] text-purple-500 hover:text-purple-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                </svg>
+                                Enter a promo code
+                            </button>
+                            <button class="flex items-center gap-2 text-[14px] font-['Azeret_Mono'] text-purple-500 hover:text-purple-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                                Add a note
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ item.product.name }}</h5>
-                            <p class="card-text">Price: ${{ item.product.price }}</p>
-                            <div class="quantity-controls">
-                                <button class="btn btn-sm btn-secondary update-quantity" data-item="{{ item.id }}" data-action="decrease">-</button>
-                                <span class="quantity mx-2">{{ item.quantity }}</span>
-                                <button class="btn btn-sm btn-secondary update-quantity" data-item="{{ item.id }}" data-action="increase">+</button>
-                                <button class="btn btn-sm btn-danger remove-item ms-3" data-item="{{ item.id }}">Remove</button>
+
+                    <!-- Order Summary -->
+                    <div class="w-full lg:w-96">
+                        <div class="bg-neutral-950 p-6 rounded-lg">
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="text-[14px] font-['Azeret_Mono']">Subtotal</span>
+                                    <span class="text-[14px] font-['Azeret_Mono']">${{ cart_total }}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-[14px] font-['Azeret_Mono']">Estimate Delivery</span>
+                                    <span class="text-[14px] font-['Azeret_Mono']">Calculate at checkout</span>
+                                </div>
+                                <div class="flex justify-between pt-4 border-t border-neutral-800">
+                                    <span class="text-[14px] font-['Azeret_Mono']">Total</span>
+                                    <span class="text-[14px] font-['Azeret_Mono']">${{ cart_total }}</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Checkout Button -->
+                            <a href="{% url 'checkout' %}" 
+                               class="block w-full text-center bg-purple-600 text-white py-3 mt-6 rounded text-[14px] font-['Azeret_Mono'] hover:bg-purple-700 transition-colors">
+                                Checkout
+                            </a>
+                            
+                            <!-- Secure Checkout -->
+                            <div class="flex justify-center items-center gap-2 mt-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                                <span class="text-[12px] font-['Azeret_Mono'] text-neutral-400">Secure Checkout</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
-            <div class="cart-summary mt-4">
-                <h4>Total: $<span id="cart-total">{{ cart_total }}</span></h4>
-                <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a>
-            </div>
         </div>
-    {% else %}
-        <p>Your cart is empty.</p>
-        <a href="{% url 'products' %}" class="btn btn-primary">Continue Shopping</a>
-    {% endif %}
-</div>
+
+        <!-- Footer fade transition -->
+        <div class="footer-fade"></div>
+
+        <footer class="bg-purple-600 text-[#f2f2f2] py-10 relative">
+            <div
+                class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-black to-purple-600"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div>
+                        <h3 class="font-bold mb-2">Have a Question?</h3>
+                        <a
+                            href="{% url 'help' %}"
+                            class="block mb-2 relative group inline-block">
+                            <span class="relative">
+                                Explore Our Help Center
+                                <span
+                                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                            </span>
+                        </a>
+                        <a
+                            href="{% url 'help' %}"
+                            class="border border-[#f2f2f2] px-4 py-2 mt-2 transition-all duration-500 ease-in-out hover:bg-[#f2f2f2] hover:text-black inline-block"
+                            >View More</a
+                        >
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">Shop</h3>
+                        <div class="flex flex-col space-y-2">
+                            <a
+                                href="{% url 'shop' %}"
+                                class="relative group inline-block">
+                                <span class="relative">
+                                    All Products
+                                    <span
+                                        class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                            <a
+                                href="{% url 'shop' %}"
+                                class="relative group inline-block">
+                                <span class="relative">
+                                    Best Sellers
+                                    <span
+                                        class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                            <a
+                                href="{% url 'sale' %}"
+                                class="relative group inline-block">
+                                <span class="relative">
+                                    Sale
+                                    <span
+                                        class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">Contact</h3>
+                        <p class="mb-2">info@technest.com</p>
+                        <p class="mb-2">Villa College (QI Campus), Boduthakurufaanu Magu, Malé</p>
+                        <p>123-456-7890</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">Follow</h3>
+                        <div class="flex flex-col space-y-2">
+                            <a
+                                href="https://www.instagram.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="relative group inline-block">
+                                <span class="relative">
+                                    Instagram
+                                    <span
+                                        class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                            <a
+                                href="https://www.facebook.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="relative group inline-block">
+                                <span class="relative">
+                                    Facebook
+                                    <span
+                                        class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                            <a
+                                href="https://www.tiktok.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="relative group inline-block">
+                                <span class="relative">
+                                    TikTok
+                                    <span
+                                        class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                            <a
+                                href="https://www.youtube.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="relative group inline-block">
+                                <span class="relative">
+                                    YouTube
+                                    <span
+                                        class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">Legal</h3>
+                        <a
+                            href="{% url 'terms' %}"
+                            class="block mb-2 relative group inline-block">
+                            <span class="relative">
+                                Terms & Conditions
+                                <span
+                                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                            </span>
+                        </a>
+                        <a
+                            href="{% url 'privacy' %}"
+                            class="block mb-2 relative group inline-block">
+                            <span class="relative">
+                                Privacy Policy
+                                <span
+                                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                            </span>
+                        </a>
+                        <a
+                            href="{% url 'shipping' %}"
+                            class="block mb-2 relative group inline-block">
+                            <span class="relative">
+                                Shipping Policy
+                                <span
+                                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                            </span>
+                        </a>
+                        <a
+                            href="{% url 'refund' %}"
+                            class="block mb-2 relative group inline-block">
+                            <span class="relative">
+                                Refund Policy
+                                <span
+                                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                            </span>
+                        </a>
+                        <a
+                            href="{% url 'accessibility' %}"
+                            class="block mb-2 relative group inline-block">
+                            <span class="relative">
+                                Accessibility Statement
+                                <span
+                                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <p
+                        >&copy; 2024 by TechNest. Built with help from
+                        <a
+                            href="https://www.cursor.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="relative group inline-block">
+                            <span class="relative">
+                                Cursor
+                                <span
+                                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#f2f2f2] transition-all duration-300 group-hover:w-full"></span>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="{% static 'js/navbar.js' %}"></script>
+        <script src="{% static 'js/cart.js' %}"></script>
+    </body>
+</html>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

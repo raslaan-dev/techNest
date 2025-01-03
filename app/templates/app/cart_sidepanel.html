@@ -1,0 +1,71 @@
+<!-- Overlay Background -->
+<div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+<!-- Cart Panel -->
+<div class="fixed inset-y-0 right-0 w-full md:w-96 bg-neutral-950 text-white transform translate-x-full transition-transform duration-300 z-50 shadow-xl"
+     id="cartSidepanel">
+    <div class="h-full flex flex-col">
+        <!-- Header -->
+        <div class="p-4 border-b border-neutral-800 flex justify-between items-center">
+            <h5 class="text-17">Your Cart</h5>
+            <button type="button" class="text-white hover:text-neutral-400 p-2" id="closeCart">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="flex-1 overflow-y-auto p-4">
+            {% if cart_items %}
+                {% for item in cart_items %}
+                <div class="flex gap-4 mb-4 pb-4 border-b border-neutral-800">
+                    <img src="{{ item.product.image.url }}" 
+                         alt="{{ item.product.name }}" 
+                         class="w-20 h-20 object-cover">
+                    <div class="flex-1">
+                        <h6 class="text-14 mb-2">{{ item.product.name }}</h6>
+                        <p class="text-14 text-neutral-400">${{ item.product.price }}</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <button class="text-white hover:text-neutral-400 update-quantity" 
+                                    data-item="{{ item.id }}" 
+                                    data-action="decrease">-</button>
+                            <span class="text-14">{{ item.quantity }}</span>
+                            <button class="text-white hover:text-neutral-400 update-quantity" 
+                                    data-item="{{ item.id }}" 
+                                    data-action="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center py-8">
+                    <p class="text-14 text-neutral-400 mb-4">Your cart is empty</p>
+                    <a href="{% url 'shop' %}" class="inline-block px-4 py-2 bg-white text-neutral-950 text-14 hover:bg-neutral-100 transition-colors">
+                        Continue Shopping
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Footer -->
+        {% if cart_items %}
+        <div class="absolute bottom-0 left-0 right-0 p-4 bg-neutral-950 border-t border-neutral-800">
+            <div class="mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-14">Total:</span>
+                    <span class="text-14">${{ cart_total }}</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <a href="{% url 'cart' %}" class="text-center px-4 py-2 border border-white text-white text-14 hover:bg-neutral-900 transition-colors">
+                    View Cart
+                </a>
+                <a href="{% url 'checkout' %}" class="text-center px-4 py-2 bg-white text-neutral-950 text-14 hover:bg-neutral-100 transition-colors">
+                    Checkout
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div> 

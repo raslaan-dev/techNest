@@ -1,26 +1,20 @@
-let lastScrollTop = 0;
-const navbar = document.querySelector('header');
-let ticking = false;
-
-window.addEventListener('scroll', () => {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down - hide navbar completely
-                navbar.style.transform = 'translate(-50%, -200%)'; // Increased even more to ensure complete hide
-            } else {
-                // Scrolling up - show navbar
-                navbar.style.transform = 'translate(-50%, 0)';
-            }
-
-            lastScrollTop = scrollTop;
-            ticking = false;
-        });
-
-        ticking = true;
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > lastScrollY) {
+            // Scrolling down
+            header.style.transform = 'translate(-50%, -100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translate(-50%, 0)';
+        }
+        
+        lastScrollY = currentScrollY;
+    });
 });
 
 // Mobile menu functionality
