@@ -56,23 +56,26 @@
 			document.addEventListener('DOMContentLoaded', function() {
 				const userMenuButton = document.getElementById('userMenuButton');
 				const userMenu = document.getElementById('userMenu');
+				
+				console.log('userMenuButton:', userMenuButton); // Debug log
+				console.log('userMenu:', userMenu); // Debug log
 
 				if (userMenuButton && userMenu) {
-					userMenuButton.addEventListener('mouseenter', function() {
-						userMenu.classList.remove('hidden');
+					console.log('Adding event listeners...'); // Debug log
+					
+					userMenuButton.addEventListener('click', function(e) {
+						console.log('Button clicked!'); // Debug log
+						e.preventDefault();
+						userMenu.classList.toggle('hidden');
 					});
 
-					userMenuButton.addEventListener('mouseleave', function() {
-						userMenu.classList.add('hidden');
+					document.addEventListener('click', function(e) {
+						if (!userMenuButton.contains(e.target) && !userMenu.contains(e.target)) {
+							userMenu.classList.add('hidden');
+						}
 					});
-
-					userMenu.addEventListener('mouseenter', function() {
-						userMenu.classList.remove('hidden');
-					});
-
-					userMenu.addEventListener('mouseleave', function() {
-						userMenu.classList.add('hidden');
-					});
+				} else {
+					console.log('Menu elements not found!'); // Debug log
 				}
 			});
 		</script>

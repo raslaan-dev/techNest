@@ -76,25 +76,29 @@
 					</ul>
 				</nav>
 				<div class="flex items-center space-x-4">
-					<div class="relative">
-						<a href="#" class="flex items-center space-x-2 text-black hover:text-gray-700" id="userMenuButton">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-							</svg>
-							<span class="text-base">Login</span>
-						</a>
-						<div id="userMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden">
-							<div class="p-4 flex items-center">
-								<img src="{% static 'img/profile-pic.jpg' %}" alt="Profile Picture" class="w-10 h-10 rounded-full mr-3">
-								<div>
-									<p class="text-sm font-semibold">{{ user.username }}</p>
-									<a href="{% url 'profile' %}" class="text-xs text-gray-500 hover:text-gray-700">Profile</a>
+					<div class="relative flex items-center justify-center">
+						{% if user.is_authenticated %}
+							<button class="p-2" id="userMenuButton">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+								</svg>
+							</button>
+							<div id="userMenu" class="absolute top-full right-0 mt-1 w-48 bg-white rounded-md shadow-lg hidden z-50">
+								<div class="p-4 border-b border-gray-200">
+									<p class="text-sm font-semibold text-black">{{ user.username }}</p>
+								</div>
+								<div class="py-1">
+									<a href="{% url 'profile' %}" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">View Profile</a>
+									<a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Logout</a>
 								</div>
 							</div>
-							<div class="border-t border-gray-200">
-								<a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
-							</div>
-						</div>
+						{% else %}
+							<a href="{% url 'login' %}" class="p-2">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+								</svg>
+							</a>
+						{% endif %}
 					</div>
 					<a href="{% url 'cart' %}" class="relative text-black">
 						<svg xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +160,7 @@
 				<div class="products-header flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
 					<h2 class="text-[14px] md:text-[16px] 2xl:text-[18px] text-[#f2f2f2] font-normal text-center sm:text-left w-full sm:w-auto">Trending Now 🔥</h2>
 					<a href="{% static 'html/shop.html' %}"
-					   class="text-[#f2f2f2] no-underline text-[14px] md:text-[16px] 2xl:text-[18px] tracking-[0.5px] hover:tracking-[1.5px] transition-all duration-300 
+					   class="text-[#f2f2f2] no-underline text-[14px] md:text-[16px] 2xl:text-[14px] tracking-[0.5px] hover:tracking-[1.5px] transition-all duration-300 
 							  relative py-0 px-[10px] bg-transparent border-0 z-10 inline-block w-full sm:w-auto text-center sm:text-left
 							  before:content-['['] before:mr-[10px] after:content-[']'] after:ml-[10px]">
 						Discover More
