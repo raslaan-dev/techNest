@@ -92,16 +92,14 @@ technest/
 ## License
 This project is open source and available under the MIT License.
 
-## Contact
-Your Name - your.email@example.com
-Project Link: [your-repository-url]
-
 
 #### created by:
-Mohamed Raslaan Najeeb
-Villa ID: S2400578
-UWE ID: 24047953
-Email: s2400578@sudents.villacollege.edu.mv
+
+** Mohamed Raslaan Najeeb **
+- Villa ID: S2400578
+- UWE ID: 24047953
+- Email: s2400578@sudents.villacollege.edu.mv
+
 
 
 
