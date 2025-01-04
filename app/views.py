@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import json
-from .models import CartItem, Product, Category
+from .models import CartItem, Product, Category, Order
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.decorators.http import require_POST
 from django.db.models import Q
@@ -79,8 +79,9 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'Login successful!')
-            return redirect('index')  # Redirect to home page
+            # Get the next parameter or default to home
+            next_url = request.GET.get('next', 'home')
+            return redirect(next_url)
         else:
             messages.error(request, 'Invalid username or password!')
             return redirect('login')
@@ -250,14 +251,16 @@ def delete_product(request, product_id):
     product.delete()
     return redirect('product_management')
 
-@login_required
+@login_required(login_url='login')
 def checkout(request):
     cart_items = CartItem.objects.filter(user=request.user)
-    cart_total = sum(item.product.price * item.quantity for item in cart_items)
-    
+    subtotal = sum(item.total_price for item in cart_items)
+    total = subtotal  # Add shipping calculation if needed
+
     context = {
         'cart_items': cart_items,
-        'cart_total': cart_total,
+        'subtotal': subtotal,
+        'total': total,
     }
     return render(request, 'app/checkout.html', context)
 
@@ -297,3 +300,46 @@ def remove_from_cart(request, item_id):
 
 def profile_view(request):
     return render(request, 'app/profile.html')
+
+@login_required(login_url='login')
+def payment(request):
+    if request.method == 'POST':
+        # Get cart items and totals
+        cart_items = CartItem.objects.filter(user=request.user)
+        subtotal = sum(item.total_price for item in cart_items)
+        total = subtotal  # Add shipping calculation if needed
+
+        context = {
+            'cart_items': cart_items,
+            'subtotal': subtotal,
+            'total': total,
+        }
+        return render(request, 'app/payment.html', context)
+    return redirect('checkout')
+
+@login_required(login_url='login')
+def process_payment(request):
+    if request.method == 'POST':
+        # Here you would integrate with your payment processor
+        # For now, we'll just simulate a successful payment
+        cart_items = CartItem.objects.filter(user=request.user)
+        
+        # Create order
+        order = Order.objects.create(
+            user=request.user,
+            total_amount=sum(item.total_price for item in cart_items)
+        )
+        
+        # Clear cart
+        cart_items.delete()
+        
+        messages.success(request, 'Payment successful! Your order has been placed.')
+        return redirect('order_confirmation')
+    
+    return redirect('checkout')
+
+@login_required(login_url='login')
+def order_confirmation(request):
+    # Get the most recent order for the user
+    order = Order.objects.filter(user=request.user).latest('created_at')
+    return render(request, 'app/order_confirmation.html', {'order': order})

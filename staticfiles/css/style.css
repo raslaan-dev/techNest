@@ -322,3 +322,11 @@ footer {
 .stagger-it:hover .char {
     color: #9333ea; /* Tailwind purple-600 */
 }
+
+.bg-neutral-900 {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    transition: transform 0.3s ease-in-out;
+}

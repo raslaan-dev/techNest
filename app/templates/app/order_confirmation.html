@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto text-center space-y-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        
+        <h1 class="text-2xl font-['Azeret_Mono']">Order Confirmed!</h1>
+        
+        <p class="text-neutral-400">
+            Thank you for your purchase. Your order has been successfully placed.
+        </p>
+        
+        <div class="bg-neutral-900 rounded-lg p-6 text-left mt-8">
+            <h2 class="text-xl mb-4 font-['Azeret_Mono']">Order Details</h2>
+            <div class="space-y-2">
+                <div class="flex justify-between">
+                    <p>Order Number:</p>
+                    <p>#{{ order.id }}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Total Amount:</p>
+                    <p>${{ order.total_amount }}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Date:</p>
+                    <p>{{ order.created_at|date:"F j, Y" }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8">
+            <a href="{% url 'home' %}" class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition-colors font-['Azeret_Mono']">
+                Continue Shopping
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

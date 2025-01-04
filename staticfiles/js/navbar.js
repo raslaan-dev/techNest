@@ -1,20 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let lastScrollY = window.scrollY;
-    const header = document.querySelector('header');
+let lastScrollY = window.scrollY;
+const navbar = document.querySelector('.bg-neutral-900');
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
     
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
+    if (currentScrollY > 100) {
         if (currentScrollY > lastScrollY) {
-            // Scrolling down
-            header.style.transform = 'translate(-50%, -100%)';
+            // Scrolling down - hide navbar
+            navbar.style.transform = 'translateY(-100%)';
         } else {
-            // Scrolling up
-            header.style.transform = 'translate(-50%, 0)';
+            // Scrolling up - show navbar
+            navbar.style.transform = 'translateY(0)';
         }
-        
-        lastScrollY = currentScrollY;
-    });
+    }
+    
+    lastScrollY = currentScrollY;
 });
 
 // Mobile menu functionality

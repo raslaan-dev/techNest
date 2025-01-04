@@ -125,13 +125,13 @@
 			</div>
 		</header>
 
-		<main class="container mx-auto px-4 pt-28 mb-32">
-			<!-- Added text section -->
-			<div class="mb-12 text-center">
+		<main class="container mx-auto px-4 pt-40 mb-32 py-8 relative">
+			<!-- Added padding-top to this div -->
+			<div class="mb-12 text-center pt-[80px]">
 				<h1 class="text-2xl mb-4">Need Help?</h1>
 				<p class="text-[14px] text-gray-400 max-w-2xl mx-auto">
-					Have questions about our products or services? We're here to help! Fill out the
-					form below and our support team will get back to you within 24 hours.
+						Have questions about our products or services? We're here to help! Fill out the
+						form below and our support team will get back to you within 24 hours.
 				</p>
 			</div>
 
@@ -209,11 +209,14 @@
 					</form>
 				</div>
 			</div>
+
+			<!-- Add fade div after the existing content but before closing main tag -->
+			<div class="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+			<!-- This div creates the fade effect -->
 		</main>
 
 		<footer class="bg-purple-600 text-[#f2f2f2] py-10 relative">
-			<div
-				class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-black to-purple-600"></div>
+			<div class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-black to-purple-600"></div>
 			<div class="container mx-auto px-4 relative z-10">
 				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
 					<div>

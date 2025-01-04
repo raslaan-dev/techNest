@@ -27,8 +27,11 @@ urlpatterns = [
     path('edit-product/<int:product_id>/', views.edit_product, name='edit_product'),
     path('delete-product/<int:product_id>/', views.delete_product, name='delete_product'),
     path('checkout/', views.checkout, name='checkout'),
+    path('payment/', views.payment, name='payment'),
+    path('process-payment/', views.process_payment, name='process_payment'),
     path('product/<int:product_id>/', views.product_detail, name='product_detail'),
     path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('profile/', views.profile_view, name='profile'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
+    path('order-confirmation/', views.order_confirmation, name='order_confirmation'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

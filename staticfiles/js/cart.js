@@ -119,4 +119,28 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error:', error));
         });
     });
+
+    // Add event listeners for the promo code and notes buttons
+    const promoButton = document.querySelector('[onclick="togglePromoCode()"]');
+    const notesButton = document.querySelector('[onclick="toggleNotes()"]');
+
+    if (promoButton) {
+        promoButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const promoInput = document.getElementById('promoCodeInput');
+            if (promoInput) {
+                promoInput.classList.toggle('hidden');
+            }
+        });
+    }
+
+    if (notesButton) {
+        notesButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const notesInput = document.getElementById('notesInput');
+            if (notesInput) {
+                notesInput.classList.toggle('hidden');
+            }
+        });
+    }
 }); 

@@ -1,0 +1,74 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl mb-8 font-['Azeret_Mono']">Payment Information</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Payment Form -->
+        <div class="space-y-6">
+            <form method="POST" action="{% url 'process_payment' %}" class="space-y-4">
+                {% csrf_token %}
+                
+                <!-- Card Information -->
+                <div>
+                    <label class="block text-sm mb-2">Card Number</label>
+                    <input type="text" name="card_number" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 focus:outline-none focus:border-purple-500" placeholder="1234 5678 9012 3456">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm mb-2">Expiry Date</label>
+                        <input type="text" name="expiry" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 focus:outline-none focus:border-purple-500" placeholder="MM/YY">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-2">CVV</label>
+                        <input type="text" name="cvv" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 focus:outline-none focus:border-purple-500" placeholder="123">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-purple-600 text-white py-4 rounded-lg hover:bg-purple-700 transition-colors font-['Azeret_Mono']">
+                    Complete Purchase
+                </button>
+            </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="space-y-6">
+            <h2 class="text-xl mb-4 font-['Azeret_Mono']">Order Summary</h2>
+            <div class="bg-neutral-900 rounded-lg p-6">
+                {% for item in cart_items %}
+                <div class="flex justify-between items-center py-3 border-b border-neutral-800">
+                    <div class="flex items-center space-x-4">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-16 h-16 object-cover rounded">
+                        <div>
+                            <p class="font-['Azeret_Mono']">{{ item.product.name }}</p>
+                            <p class="text-sm text-neutral-400">Quantity: {{ item.quantity }}</p>
+                        </div>
+                    </div>
+                    <p>${{ item.total_price }}</p>
+                </div>
+                {% endfor %}
+
+                <div class="mt-6 space-y-2">
+                    <div class="flex justify-between">
+                        <p>Subtotal</p>
+                        <p>${{ subtotal }}</p>
+                    </div>
+                    <div class="flex justify-between pt-4 border-t border-neutral-800">
+                        <p class="font-bold">Total</p>
+                        <p class="font-bold">${{ total }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center space-x-2 text-neutral-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm">Secure Payment</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
